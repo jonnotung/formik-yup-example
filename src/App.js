@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import {BrowserRouter, Route, Link, NavLink} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TestForm from './TestForm'
+import UpdateTest from './UpdateTest'
+import MultiStep from './MultiStep'
+import ServerValidation from './ServerValidation'
+
+const App = ({values, setFieldValue, handleChange}) => {
+  
+  return(
+    <BrowserRouter>
+      <Fragment>
+        <NavLink to='/test-form' activeStyle={{color: 'red'}}>General Test Form</NavLink>
+        <NavLink to='/update-test' activeStyle={{color: 'red'}}>Update Test Form</NavLink>
+        <NavLink to='/multistep-form' activeStyle={{color: 'red'}}>Multi-step Form </NavLink>
+        <NavLink to='/server-validation' activeStyle={{color: 'red'}}>Server Validation</NavLink>
+
+        <Route path='/test-form' component={TestForm} />
+        <Route path='/update-test' component={UpdateTest} />
+        <Route path='/multistep-form' component={MultiStep} />
+        <Route path='/server-validation' component={ServerValidation} />
+      </Fragment>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
+
+
